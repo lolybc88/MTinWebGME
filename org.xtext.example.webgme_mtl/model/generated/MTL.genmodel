@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.xtext.example.webgme_mtl/src-gen" editDirectory="/org.xtext.example.webgme_mtl.edit/src"
+    editorDirectory="/org.xtext.example.webgme_mtl.editor/src" modelPluginID="org.xtext.example.webgme_mtl"
+    forceOverwrite="true" modelName="MTL" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="org.xtext.example.webgme_mtl.edit"
+    editorPluginID="org.xtext.example.webgme_mtl.editor" runtimeVersion="2.10">
+  <genPackages prefix="MTL" basePackage="org.xtext.example.webgme" disposableProviderFactory="true"
+      fileExtensions="mt" ecorePackage="MTL.ecore#/">
+    <genClasses ecoreClass="MTL.ecore#//Model">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//Model/rules"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//Rule">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//Rule/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//Rule/inPatterns"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//Rule/filter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//Rule/outPatterns"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//InPattern">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//InPattern/inElem"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//InPattern/className"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//Filter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//Filter/expr"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//OutPattern">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//OutPattern/varName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//OutPattern/className"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//OutPattern/assg"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//Assignation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//Assignation/attribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//Assignation/expr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//Assignation/relationship"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//SimpleExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//SimpleExpression/_string"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//SimpleExpression/_integer"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//SimpleExpression/_double"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//SimpleExpression/_boolean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//SimpleExpression/isNull"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//SimpleExpression/navigation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//SimpleExpression/ifSentence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//SimpleExpression/colectionType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//SimpleExpression/elems"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//SimpleExpression/nav"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//SimpleExpression/resolve"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//Navig">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//Navig/attr"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//Navig/navigation"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//Navigation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//Navigation/attName"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//Navigation/assocRole"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//Navigation/opType1"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//Navigation/opType2"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//IfSentence">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//IfSentence/cond"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//IfSentence/body"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//IfSentence/elsebody"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//ResolveExp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//ResolveExp/exp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//ResolveExp/position"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//ComplexExpression">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//ComplexExpression/prefixNot"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//ComplexExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//ComplexExpression/infixOp"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//ComplexExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//AssocRoleName">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//AssocRoleName/children"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//AssocRoleName/parent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//AssocRoleName/name"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//OCLOperationType1">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//OCLOperationType1/allIns"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//OCLOperationType1/isTypeOf"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//OCLOperationType1/toString"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//OCLOperationType1/concatenate"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//OCLOperationType2">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//OCLOperationType2/size"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//OCLOperationType2/forall"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//OCLOperationType2/exists"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//OCLOperationType2/select"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//OCLOperationType2/collect"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//OCLOperationType2/first"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//OCLOperationType2/last"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//OCLOperationType2/indexOf"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//OCLOperationType2/union"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//OCLOperationType2/intersection"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//OCLOperationType2/isUndefined"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//IndexOfOp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//IndexOfOp/index"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//ForAllOp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//ForAllOp/var"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//ForAllOp/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//ExistsOp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//ExistsOp/var"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//ExistsOp/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//SelectOp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//SelectOp/var"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//SelectOp/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//CollectOp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//CollectOp/var"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//CollectOp/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//IsTypeOfOp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//IsTypeOfOp/className"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//ConcatOp">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MTL.ecore#//ConcatOp/s"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//UnionOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//UnionOp/exp"/>
+    </genClasses>
+    <genClasses ecoreClass="MTL.ecore#//IntersectionOp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MTL.ecore#//IntersectionOp/exp"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

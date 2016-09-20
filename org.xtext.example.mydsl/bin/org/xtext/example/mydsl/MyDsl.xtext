@@ -1,0 +1,45 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+
+/*
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
+*/
+
+Model:
+    (elements+=AbstractElement)*;
+
+PackageDeclaration:
+    'package' name=QualifiedName '{'
+    (elements+=AbstractElement)*
+    '}';
+
+Type:
+    DataType | Entity;
+
+DataType:
+    'datatype' name=ID;
+
+AbstractElement:
+    PackageDeclaration | Type | Import;
+
+QualifiedName:
+    ID ('.' ID)*;
+
+Import:
+    'import' importedNamespace=QualifiedNameWithWildcard;
+
+QualifiedNameWithWildcard:
+    QualifiedName '.*'?;
+
+Entity:
+    'entity' name=ID ('extends' superType=[Entity|QualifiedName])? '{'
+    (features+=Feature)*
+    '}';
+
+Feature:
+    (many?='many')? name=ID ':' type=[Type|QualifiedName];

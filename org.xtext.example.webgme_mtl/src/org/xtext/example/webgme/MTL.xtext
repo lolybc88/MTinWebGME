@@ -1,0 +1,129 @@
+grammar org.xtext.example.webgme.MTL with org.eclipse.xtext.common.Terminals hidden(WS, ML_COMMENT, SL_COMMENT)
+
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+generate mTL "http://www.xtext.org/example/webgme/MTL"
+
+Model:
+	rules+=Rule*;
+	
+terminal ML_COMMENT  : '/*' -> '*/';
+
+terminal SL_COMMENT : 
+ '//' !('\n'|'\r')* ('\r'? '\n')?;
+
+terminal BOOLEAN:
+	'true'|'false';
+	
+terminal DOUBLE : INT '.' INT;
+
+terminal WS : (' '|'\t'|'\r'|'\n')+;
+	
+Rule:
+	'rule' name=ID '{'
+		'from'
+			(inPatterns+=InPattern)+ ('(' filter=Filter ')')?
+		'to'
+			(outPatterns+=OutPattern)+
+		'}';
+
+InPattern:
+	inElem=ID ':' className=ID;
+
+Filter:
+	expr=ComplexExpression;
+
+OutPattern:
+	varName=ID ':' className=ID '('
+		(assg+=Assignation)*
+	')';
+
+Assignation:
+	attribute=ID '<-' expr=ComplexExpression |
+	relationship=AssocRoleName '<-' expr=ComplexExpression;
+
+SimpleExpression:
+	_string=STRING | _integer=INT | _double=DOUBLE | _boolean=BOOLEAN | isNull='null' |
+	navigation=Navig |
+	ifSentence=IfSentence |
+	colectionType=CollectionType '{' elems+=ComplexExpression* '}' nav+=Navigation* |
+	resolve=ResolveExp;
+
+Navig:
+	attr=ID navigation+=Navigation*;
+
+Navigation:
+	('.' attName=ID) | ('.' assocRole=AssocRoleName) | ('.' opType1=OCLOperationType1) | ('->' opType2=OCLOperationType2);
+
+IfSentence:
+	'if' cond=ComplexExpression 'then' body=ComplexExpression 'else' elsebody=ComplexExpression 'endif';
+
+ResolveExp:
+	'resolve' '(' exp=ComplexExpression (',' position=INT)? ')';
+
+ComplexExpression:
+	prefixNot='not' '(' left=SimpleExpression (infixOp+=InfixPrimitiveOperator right+=SimpleExpression)* ')' |
+	left=SimpleExpression (infixOp+=InfixPrimitiveOperator right+=SimpleExpression)* ;
+
+AssocRoleName:
+	children='children()' | parent='parent()' | name=ID'()';
+
+CollectionType:
+	'Set' | 'Sequence' | 'Bag';
+
+OCLOperationType1:
+	allIns=AllInstancesOp | isTypeOf=IsTypeOfOp | toString=ToStringOp | concatenate=ConcatOp;
+
+OCLOperationType2:
+	size=SizeOp | forall=ForAllOp | exists=ExistsOp | select=SelectOp | collect=CollectOp |
+	first=FirstOp | last=LastOp | indexOf=IndexOfOp | union=UnionOp | intersection=IntersectionOp |
+	isUndefined=IsUndefinedOp;
+
+InfixPrimitiveOperator:
+	'=' | '!=' | '>' | '<' | '>=' | '<=' | '+' | '-' | '*' | '/' | 'and' | 'or';
+
+SizeOp:
+	'size' '()';
+
+FirstOp:
+	'first' '()';
+
+LastOp:
+	'last' '()';
+	
+IndexOfOp:
+	'indexOf' '(' index=INT ')';
+
+AllInstancesOp:
+	'allInstances' '()';
+
+ForAllOp:
+	'forAll' '(' var=ID '|' exp=ComplexExpression ')';
+
+ExistsOp:
+	'exists' '(' var=ID '|' exp=ComplexExpression ')';
+
+SelectOp:
+	'select' '(' var=ID '|' exp=ComplexExpression ')';
+	
+CollectOp:
+	'collect' '(' var=ID '|' exp=ComplexExpression ')';
+
+IsTypeOfOp:
+	'isTypeOf' '(' className=ID ')';
+
+ToStringOp:
+	'toString' '()';
+
+ConcatOp:
+	'concatenate' '(' s=STRING ')';
+
+UnionOp:
+	'union' '(' exp=ComplexExpression ')';
+
+IntersectionOp:
+	'intersection' '(' exp=ComplexExpression ')';
+	
+IsUndefinedOp:
+	'isUndefined' '()'
+;
